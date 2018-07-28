@@ -1,0 +1,283 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.logo{
+  align-items: center;
+  display: flex;
+}
+.logo img{
+  height:40px;
+}
+
+.logo span{
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+footer{
+  margin-top: 50px;
+  padding: 50px 50px;
+  text-align: center;
+  background-color: #f6f6f4;
+}
+a:link {
+    color: #000000;
+    text-decoration: none
+}
+a:visited {
+    color: #000000;
+    text-decoration: none
+}
+
+a:hover {
+    color: red;
+}
+
+.newscontainer{
+  padding-top: 20px;
+
+}
+
+.news-img-container{
+  padding-top: 20px;
+}
+
+.news-img-block{
+  margin: 5px;
+}
+.news-img-list{
+  padding-top: 10px;
+}
+
+.news-img-title{
+  padding-right: 15px;
+  font-weight:bold;
+  width: 100%;
+  height: 100%;
+
+}
+.news-img-desc{
+
+  position: relative;
+  line-height: 20px;
+  max-height: 60px;
+  overflow: hidden;
+}
+
+.news-img-desc::after{
+  content: "»";
+  position: absolute;
+  bottom: 0; right: 0;
+  padding-left: 40px;
+  background: -webkit-linear-gradient(left, transparent, #fff 55%);
+  background: -o-linear-gradient(right, transparent, #fff 55%);
+  background: -moz-linear-gradient(right, transparent, #fff 55%);
+  background: linear-gradient(to right, transparent, #fff 55%);
+}
+
+.div-line {
+  margin-top:  6px;
+  height:0.8px;
+  width:100%;
+  background: #f6f6f4;
+  overflow:hidden;
+}
+
+
+
+.news-img-title-right{
+  padding-left: 10px;
+  width: 100%;
+  height: 100%;
+
+}
+
+.leftcontainer{
+  margin: 1px;
+  padding-top: 10px;
+  padding-right: 5px;
+  width: 100%;
+  float: left;
+}
+.rightcontainer{
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-right: 5px;
+  float: left;
+  border-color: #000000;
+}
+
+.more-news{
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
+.more-news-header{
+  font-family: "Colfax", Arial, Sans-serif;
+  font-style: normal;
+  color: #6d7570;
+  margin-top: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.more-news-list{
+  font-size: 18px;
+  font-weight: 500;
+  padding-top: 10px;
+
+}
+
+.carousel{
+  width: 100%;
+}
+.fix-top{
+  background-color: #f6f6f4;;
+  height: 45px;
+  margin-bottom: 10px;
+  align-items:center;
+}
+.user-button{
+  float: right;
+  padding-top: 5px;
+  align-items:center;
+}
+.clock-pad{
+  float: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 16px;
+}
+.clock-now{
+  padding-left: 30px;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.weather-pad{
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.weather-desc{
+  font-size: 110%;
+  padding-top: 12px;
+}
+.user-dropdown-btn{
+  float: right;
+  padding-right: 35px;
+  padding-top: 6px;
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.personal-container{
+  align-items: center;
+  align-content: center;
+
+}
+.customize-menu{
+  border-bottom: 1px solid #ebedf0;
+  border-left: 1px solid #ebedf0;
+}
+
+.personal-profile{
+  padding-top: 10px;
+  text-align: center;
+  font-size: 150%;
+}
+
+.personal-setting{
+  padding-top: 80px;
+  padding-left: 20px;
+}
+
+.user-avatar{
+
+}
+
+.dashboard-title{
+  font-size: 200%;
+  font-weight: 700;
+  padding-bottom: 40px;
+}
+
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
+
+.block-headline {
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.logo-text{
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.articleHeader-author {
+    margin-left: 5px;
+    padding-left: 5px;
+    font-family: "HelveticaNeue",Calibri,Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    color: #414042;
+    position: relative;
+    flex: 0 1 auto;
+
+}
+
+.duration-time{
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto;
+  color: #a7a9ac;
+  font-family: "HelveticaNeueCondensed",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  float: left;
+}
+
+.img-headline{
+  padding: 12px 15px;
+  border: solid 1px #eaeaea;
+  border-top: 0;
+  background-color: #f8f8f8;
+  height: 100%;
+}
+
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
