@@ -13,21 +13,6 @@ class NewsBlockOnPC extends Component{
     };
   }
 
-  // componentWillMount(){
-  //   let myFetchOptions = {
-  //     method: 'GET'
-  //   };
-  //   let type="bbc-news";
-  //   let apiKey ="8387e17c44564618a759c1f63fed10fb";
-  //   let url = `https://newsapi.org/v2/top-headlines?sources=${type}&apiKey=${apiKey}`;
-  //
-  //
-  //   fetch(url,myFetchOptions)
-  //     .then(response=>response.json())
-  //     .then(json=>this.setState({news:json}))
-  //     .catch(error=>console.log(error));
-  // }
-
 
   render(){
     const articles = this.props.articles;

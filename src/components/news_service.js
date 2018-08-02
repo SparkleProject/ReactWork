@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-
+const mock = require('../mock/mock');
 
 export const NewsService  = (WrappedComponent, sources)=>{
   class Service extends Component{
@@ -11,31 +11,35 @@ export const NewsService  = (WrappedComponent, sources)=>{
     constructor () {
      super()
      this.state = {
-       baseUrl: 'https://newsapi.org/v2/top-headlines',
+       baseUrl: mock.MockSourceAPI.apiUrl,
+       key:mock.MockSourceAPI.apiKey
     }
    }
+   componentWillMount () {
+      this.getData();
+    }
 
    getData =()=>{
      let fetchOptions = {
        method: 'GET'
      };
-     //set source properties
+     //set source properties, only used for demostraionthe.
+     // For security, api key should be not embeded in clint side!!
+     // an back end api server is highly recomented and apend API key on back end servier.
      let data= this.props.data?this.props.data:sources;
-     let apiKey ="8387e17c44564618a759c1f63fed10fb";
      let url = "";
      if(this.props.type && this.props.data){
          switch(this.props.type){
           case 'publisher':
-            url = `${this.state.baseUrl}?sources=${data}&apiKey=${apiKey}`;
+            url = `${this.state.baseUrl}?sources=${data}&apiKey=${this.state.key}`;
             break;
           case 'country':
-            url = `${this.state.baseUrl}?country=${data}&apiKey=${apiKey}`;
+            url = `${this.state.baseUrl}?country=${data}&apiKey=${this.state.key}`;
             break;
        }
      }else{
-       url = `${this.state.baseUrl}?sources=${data}&apiKey=${apiKey}`;
+       url = `${this.state.baseUrl}?sources=${data}&apiKey=${this.state.key}`;
      }
-     //console.log(url);
 
      //set result filter
      let order = new String(this.props.order).toUpperCase();
@@ -54,10 +58,6 @@ export const NewsService  = (WrappedComponent, sources)=>{
        })
        .catch(error=>console.log(error));
    }
-
-   componentWillMount () {
-      this.getData();
-    }
 
 
     render(){

@@ -21,13 +21,10 @@ export default class NewsPage extends Component{
 
 
   handleClickMenu = (key)=>{
-    console.log('click key:',key);
     this.setState({category:key});
   }
 
   render(){
-
-    console.log('newspage...',this.state.category);
 
     const CustomizeNews = (props)=>{
       return(
