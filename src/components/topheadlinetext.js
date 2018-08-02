@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col, Tabs, Carousel} from 'antd';
+import {Row, Col, Tabs, Carousel, Spin} from 'antd';
 import NewsBlockOnPC from './newsblock_pc'
 import {NewsService} from './news_service'
 import NewsHeadlineList from './newsheadlinelist_pc'
@@ -32,7 +32,7 @@ class TopHeadlineText extends Component{
           </div>
         )
     })
-    :'no news is found...';
+    :text['loading...'];
 
     return(
       <div>

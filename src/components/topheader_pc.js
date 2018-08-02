@@ -29,21 +29,52 @@ class TopHeaderOnPC extends Component{
   constructor(){
     super();
     this.state = {
-      time : '',
+      //time : '',
       top: 0,
-      headList :'',
-      topcolor: 'red',
+      //headList :'',
+      //topcolor: 'red',
       current: 'GLOBAL',
       modalVisible: false,
-      action: 'login',
-      isLogin: true,
-      userNickName: 'Eric',
-      userId: 0
+      //action: 'login',
+      isLogin: false,
+      userName: '',
+      userId: ''
     }
   }
 
+  componentWillMount(){
+    this._loginState();
+    //this._loadProperties();
+  }
 
+  _loginState = () => {
+        let isLogin = localStorage.getItem('isLogin');
+        let userName = localStorage.getItem('userName');
+        let userId = localStorage.getItem('userId');
+        if (isLogin === 'true') {
+           this.setState({ isLogin:true })
+           this.setState({ userName:userName })
+           this.setState({ userId:userId })
+         }else{
+           this.setState({ isLogin:false })
+           this.setState({ userName:'' })
+           this.setState({ userId:'' })
+         }
+        }
 
+_setLoginState(user){
+          //console.log(JSON.stringify(data));
+          try {
+            if(user){
+              localStorage.setItem('isLogin', true);
+              localStorage.setItem('userId', user.userid);
+              localStorage.setItem('userName', user.username);
+            }
+
+          } catch (e) {
+            localStorage.setItem('isLogin', false)
+          }
+        }
 
   setModalVisible(value){
     this.setState({
@@ -62,7 +93,6 @@ class TopHeaderOnPC extends Component{
     }
 
   handleCancel = (e) => {
-      //console.log(e);
       this.setState({
         modalVisible: false,
       });
@@ -71,19 +101,36 @@ class TopHeaderOnPC extends Component{
  handleSubmit = (e)=>{
    e.preventDefault();
    let formData = this.props.form.getFieldsValue();
+   //mock the login verification on back-end
    for(let user of mock.MockUsers){
      if(user.username === formData.userName && user.password === formData.password){
         this.setState({isLogin: true});
-        this.setState({userNickName: user.username});
+        this.setState({userName: user.username});
+        this.setState({userId: user.userid});
+        this._setLoginState(user);
         this.setModalVisible(false);
         message.success('login success');
-        break;
+        return;
      }
    }
+   //login failed
+   this.setState({isLogin: false});
+   this.setState({userName: ''});
+   this._setLoginState(false);
+   message.error('user name or password is incorrect.');
  }
 
  handleSignIn = (e)=>{
    this.showModal();
+ }
+ handleLogout = (e)=>{
+   this.setState({isLogin: false});
+   this.setState({userName: ''});
+   this._setLoginState(false);
+   localStorage.setItem('isLogin', false);
+   localStorage.setItem('userId', '');
+   localStorage.setItem('userName', '');
+   message.info('you have logged out');
  }
 
 
@@ -104,7 +151,7 @@ class TopHeaderOnPC extends Component{
             </Link>
           </Menu.Item>
           <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="#">
+            <a target="_blank" rel="noopener noreferrer" onClick={this.handleLogout.bind(this)}>
               <Icon type="logout"></Icon>&nbsp;&nbsp; log out
             </a>
           </Menu.Item>
@@ -121,7 +168,7 @@ class TopHeaderOnPC extends Component{
         <div className="user-dropdown-btn">
 
                   Hi, &nbsp;&nbsp;
-                  <span >{this.state.userNickName}</span>
+                  <span >{this.state.userName}</span>
                   &nbsp;&nbsp;
                   <Icon type="down" />
 

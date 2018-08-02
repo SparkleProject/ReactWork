@@ -6,46 +6,39 @@ import PersonalOnPC from './personal_pc'
 import MediaQuery from 'react-responsive'
 import CustomizeNewsOnPC from './customizenews_pc'
 import TopHeaderOnPC from './topheader_pc'
-
-
 import '../css/App.css';
 
 class App extends Component {
   constructor(){
     super();
-    this.state ={
+    this.state = {
+      userId: '',
+      userName: '',
+      isLogin: false,
       properties: {
-        showWeather:'',
-        showClock:'',
-        newsMenu:''
+        showWeather: true,
+        showClock: false,
+        newsMenu: []
       },
-    }
+    };
   }
 
   componentWillMount(){
-    this._loadProperties();
-  }
-
-  _saveData(data){
-    try {
-      localStorage.setItem('properties', JSON.stringify(data))
-    } catch (e) {
-      localStorage.setItem('properties', `${data}`)
+    //localStorage.setItem('isLogin', this.state.isLogin)
+    //localStorage.setItem('properties', JSON.stringify(this.state.properties))
+    let userName = localStorage.getItem('userName');
+    if(userName === null || (typeof userName === "undefined")){
+        this._setDefault();
     }
   }
 
-  _loadProperties () {
-  	    let properties = localStorage.getItem('properties');
-  	    if (properties) {
-  	      properties = JSON.parse(properties)
-  	      this.setState({ properties })
-  	    }
-    	}
-
-
-  handleTopBarUpdate = ()=>{
-    this._loadProperties();
+  _setDefault = ()=>{
+    localStorage.setItem('properties', JSON.stringify(this.state.properties))
+    localStorage.setItem('userId', this.state.userId)
+    localStorage.setItem('userName', this.state.userName)
+    localStorage.setItem('isLogin', this.state.isLogin)
   }
+
 
   render() {
     return (

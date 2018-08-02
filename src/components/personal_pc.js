@@ -16,16 +16,19 @@ class PersonalOnPC extends Component{
   constructor(){
     super();
     this.state = {
-      userNickName:'Eric',
+      userId: '',
+      userNickName: '',
+      isLogin: '',
       properties: {
-        showWeather:'',
-        showClock:'',
-        newsMenu:''
+        showWeather: '',
+        showClock: '',
+        newsMenu: ''
       },
     };
   }
 
   componentWillMount(){
+    this._loginState();
     this._loadProperties();
   }
 
@@ -36,6 +39,18 @@ class PersonalOnPC extends Component{
       localStorage.setItem('properties', `${data}`)
     }
   }
+  _loginState = () => {
+        let isLogin = localStorage.getItem('isLogin');
+        let userName = localStorage.getItem('userName');
+        let userId = localStorage.getItem('userId');
+        if (isLogin) {
+           this.setState({ isLogin:true })
+           this.setState({ userNickName:userName })
+           this.setState({ userId:userId })
+         }else{
+           this.setState({ isLogin:false })
+         }
+        }
 
   _loadProperties () {
   	    let properties = localStorage.getItem('properties');

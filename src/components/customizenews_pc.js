@@ -46,13 +46,13 @@ export default class CustomizeNewsOnPC extends Component{
     const option_leftimgblock_2 ={
       type:'publisher',
       data:map[2],
-      count:'8'
+      count:'6'
     }
 
     const option_headlinelist ={
       type:'publisher',
       data:map[3],
-      count:'8'
+      count:'4'
     }
 
     return(
@@ -66,13 +66,13 @@ export default class CustomizeNewsOnPC extends Component{
               </Col>
             </Row>
             <Row>
-              <Col md="8" sm="24">
+              <Col span="8" >
                 <LeftNewsImgBlock {...option_leftimgblock_1}></LeftNewsImgBlock>
               </Col>
-              <Col md="8" sm="24">
+              <Col span="8">
                 <LeftNewsImgBlock {...option_leftimgblock_2}></LeftNewsImgBlock>
               </Col>
-              <Col md="8" sm="24">
+              <Col span="8">
                 <NewsHeadlineList {...option_headlinelist}></NewsHeadlineList>
               </Col>
             </Row>

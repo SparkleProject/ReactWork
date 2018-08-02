@@ -6,6 +6,9 @@ export default class TopBarSettingOnPC extends Component{
   constructor(){
     super();
     this.state = {
+      isLogin:'',
+      userId:'',
+      userName:'',
       properties: {
         showWeather:true,
         showClock:true,
@@ -15,11 +18,14 @@ export default class TopBarSettingOnPC extends Component{
   }
 
     componentWillMount(){
-      this._loadProperties();
+      let isLogin = this._loginState();
+      if(isLogin){
+        this._loadProperties();
+      }
     }
 
     _saveData(data){
-      console.log(JSON.stringify(data));
+      console.log('saving properties...',JSON.stringify(data));
       try {
         localStorage.setItem('properties', JSON.stringify(data))
       } catch (e) {
@@ -28,12 +34,29 @@ export default class TopBarSettingOnPC extends Component{
     }
 
     _loadProperties () {
+
     	    let properties = localStorage.getItem('properties');
+          console.log('properties:',properties);
     	    if (properties) {
     	      properties = JSON.parse(properties)
-    	      this.setState({ properties })
+    	      this.setState({ ...this.state,properties})
     	    }
       	}
+
+    _loginState = ()=> {
+        	let isLogin = localStorage.getItem('isLogin');
+        	if (isLogin === 'true') {
+        	   this.setState({ isLogin:true });
+             this.setState({ userId:localStorage.getItem('userId') });
+             this.setState({ userName:localStorage.getItem('userName')});
+             return true;
+           }else{
+             this.setState({ isLogin:false });
+             this.setState({ userId:'' });
+             this.setState({ userName:''});
+             return false;
+           }
+          }
 
     handleOnChange =(key,value)=>{
           let properties = {};
@@ -48,7 +71,7 @@ export default class TopBarSettingOnPC extends Component{
               properties = { ...this.state.properties}
           }
 
-          this.setState ({properties});
+          this.setState ({...this.state,properties});
           this._saveData(properties);
           this.props.update();
         }

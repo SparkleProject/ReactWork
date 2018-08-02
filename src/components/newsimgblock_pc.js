@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col, Tabs} from 'antd';
+import {Row, Col, Tabs,Spin} from 'antd';
 import {NewsService} from './news_service'
 
 const TabPane = Tabs.TabPane;
@@ -10,10 +10,6 @@ class NewsImgBlock extends Component{
 
   }
 
-  componentWillUpdate(){
-    //this.props.update();
-    console.log('updating....');
-  }
 
 
   render(){
@@ -48,7 +44,7 @@ class NewsImgBlock extends Component{
         )
 
     })
-    :imgBlock['loading....'];
+    :imgBlock.push(<Spin/>);
 
     return(
       <div className="news-img-container">

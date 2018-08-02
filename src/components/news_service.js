@@ -61,7 +61,6 @@ export const NewsService  = (WrappedComponent, sources)=>{
 
 
     render(){
-      console.log('service data:',this.props.data);
       return <WrappedComponent {...this.props} {...this.state.newsProps} update={this.getData.bind(this)}/>
     }
   }

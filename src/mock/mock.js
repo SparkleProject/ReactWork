@@ -1,9 +1,9 @@
 // this is a mock for back end request
 export const MockUsers = ([
-  { username: 'Eric', password:'000000'},
-  { username: 'Tomy',  password:'000000'},
-  { username: 'Lily',  password:'000000'},
-  { username: 'Lucy',  password:'000000'}
+  { userid:'1',username: 'Eric', password:'000000'},
+  { userid:'2',username: 'Tomy',  password:'000000'},
+  { userid:'3',username: 'Lily',  password:'000000'},
+  { userid:'4',username: 'Lucy',  password:'000000'}
 ])
 
 export const MockMenuOption = (['BUSINESS','SPORT','SCIENCE','TECH','ENT'])

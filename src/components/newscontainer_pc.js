@@ -28,7 +28,7 @@ class NewsContainerOnPC extends Component{
     const option_leftcontainer_bottom ={
       type:'publisher',
       data:'cnn',
-      count:'3'
+      count:'4'
     }
 
     const option_rightcontainer_headline ={
@@ -41,7 +41,7 @@ class NewsContainerOnPC extends Component{
       type:'publisher',
       data:'abc-news',
       order:'DESC',
-      count:'7'
+      count:'8'
     }
 
     const option_headlinelist ={
